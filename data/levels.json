@@ -29,6 +29,16 @@
   "levels": [
     {
       "rank": 1,
+      "name": "Knights of Thunder",
+      "list": "main",
+      "creator": "HangerLord",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/kot.jpeg"
+    },
+    {
+      "rank": 2,
       "name": "Icefall",
       "list": "main",
       "creator": "Filqh",
@@ -38,7 +48,7 @@
       "thumbnail": "images/v194_362.png"
     },
     {
-      "rank": 2,
+      "rank": 3,
       "name": "Black Blizzard",
       "list": "main",
       "creator": "KrmaL",
@@ -48,7 +58,7 @@
       "thumbnail": "images/v194_369.png"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "name": "Cloud",
       "list": "main",
       "creator": "Kuip",
@@ -58,7 +68,7 @@
       "thumbnail": "images/v194_375.png"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "name": "Wild Rose",
       "list": "main",
       "creator": "Galaxxyss",
@@ -68,7 +78,7 @@
       "thumbnail": "images/v194_381.png"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "name": "RASH",
       "list": "main",
       "creator": "loltad",
@@ -78,7 +88,7 @@
       "thumbnail": "images/v194_387.png"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "name": "Blade of Justice",
       "list": "main",
       "creator": "Manix648",
@@ -88,7 +98,7 @@
       "thumbnail": "images/v194_393.png"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "name": "Gravity",
       "list": "main",
       "creator": "icedcave",
@@ -98,7 +108,7 @@
       "thumbnail": "images/v194_399.png"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "name": "Bloodbath",
       "list": "main",
       "creator": "Riot",
@@ -109,7 +119,7 @@
       "thumbnail": "images/v194_408.png"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "name": "Allegiance",
       "list": "main",
       "creator": "NikroPlays",
@@ -120,7 +130,7 @@
       "thumbnail": "images/v194_414.png"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "name": "Hypersonic",
       "list": "main",
       "creator": "Viprin",
@@ -130,7 +140,7 @@
       "thumbnail": "images/v194_420.png"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "name": "Cataclysm",
       "list": "main",
       "creator": "Ggb0y",
@@ -140,7 +150,7 @@
       "thumbnail": "images/v194_598.png"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "name": "Prismatic",
       "list": "main",
       "creator": "CatGeo",
@@ -150,7 +160,7 @@
       "thumbnail": "images/v194_616.png"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "name": "BRUTAL",
       "list": "main",
       "creator": "TShack",
@@ -160,7 +170,7 @@
       "thumbnail": "images/v194_579.png"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "name": "Sweater Weather",
       "list": "main",
       "creator": "VelYT",
@@ -172,9 +182,9 @@
       "thumbnail": "images/v194_573.png"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "name": "rauchkammer",
-      "list": "main",
+      "list": "extended",
       "creator": "Devilmine",
       "beatenBy": [
         "Mathmix"
