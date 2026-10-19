@@ -1,0 +1,419 @@
+/* ============================================================
+   Fish Republic Demonlist — responsive rebuild
+   ============================================================ */
+
+:root {
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --glass-bg: rgba(10, 10, 16, 0.55);
+  --glass-bg-hover: rgba(10, 10, 16, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: 16px;
+  --text: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.85);
+  --text-dim: rgba(255, 255, 255, 0.55);
+  --radius: 25px;
+  --content-width: 1000px;
+  --nav-height: 68px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keep jump targets clear of the fixed navbar */
+[id$="-list"] {
+  scroll-margin-top: calc(var(--nav-height) + 2rem);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--text);
+  background: #0b0b12;
+  -webkit-font-smoothing: antialiased;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   Background sections (decorative art, full-width, in flow)
+   ------------------------------------------------------------ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Background images are set per-list from data/levels.json (inline). */
+
+/* Frosted copy of the section's background art, blurred and darkened.
+   It fully covers the section's own (sharp) background. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: -24px; /* hides the blurred edge bleed */
+  background: inherit;
+  filter: blur(16px) brightness(0.7);
+}
+
+/* Dark overlay on top of the frosted art so the glass cards stay readable */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Overlays are decorative — never intercept clicks */
+.section::before,
+.section::after {
+  pointer-events: none;
+}
+
+.section__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
+  padding: 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.section[hidden] {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   Navbar — fixed frosted glass
+   ------------------------------------------------------------ */
+
+.navbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: min(100% - 2rem, var(--content-width));
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem 0 0.5rem;
+  border-radius: var(--radius);
+  background: rgba(10, 10, 16, 0.55);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.navbar__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.navbar__title {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar__link {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.navbar__link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ------------------------------------------------------------
+   Filter chips
+   ------------------------------------------------------------ */
+
+.filters {
+  position: relative; /* keep the chip bar above the background overlays */
+  z-index: 1;
+  padding-top: calc(var(--nav-height) + 2.5rem);
+  width: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.filters__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.filters__chip {
+  display: inline-block;
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  text-decoration: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: rgba(10, 10, 16, 0.55);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.filters__chip:hover {
+  background: rgba(10, 10, 16, 0.75);
+  transform: translateY(-1px);
+}
+
+/* Tight gap between the chips and the first card */
+.section--first .section__inner {
+  padding-top: 1.25rem;
+}
+
+/* A little breathing room at the end of the page */
+.section--last .section__inner {
+  padding-bottom: 4rem;
+}
+
+/* ------------------------------------------------------------
+   Data loading error box
+   ------------------------------------------------------------ */
+
+.error-box {
+  width: min(100% - 2rem, var(--content-width));
+  margin: calc(var(--nav-height) + 3rem) auto 4rem;
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.error-box h2 {
+  margin-bottom: 1rem;
+}
+
+.error-box pre {
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--text-soft);
+  overflow-x: auto;
+}
+
+.error-box p {
+  color: var(--text-dim);
+  margin: 0.75rem 0;
+}
+
+/* ------------------------------------------------------------
+   Level cards — dark glassmorphism
+   ------------------------------------------------------------ */
+
+.level-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.level-card:hover {
+  background: var(--glass-bg-hover);
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.level-card[hidden] {
+  display: none;
+}
+
+.level-card__thumb {
+  flex: 0 0 42%;
+  aspect-ratio: 16 / 9;
+  align-self: center;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.level-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-card__name {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.level-card__author {
+  margin-top: 0.9rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  color: var(--text-dim);
+}
+
+.level-card__meta {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+}
+
+.level-card__points,
+.level-card__beaten {
+  font-size: 1rem;
+  color: var(--text-soft);
+}
+
+/* ------------------------------------------------------------
+   Extended list divider + empty state
+   ------------------------------------------------------------ */
+
+.list-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.list-divider[hidden] {
+  display: none;
+}
+
+.list-divider span {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #cfcfcf;
+  text-align: center;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  font-size: 1rem;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   Responsive tweaks
+   ------------------------------------------------------------ */
+
+@media (max-width: 720px) {
+  .level-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .level-card__thumb {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .level-card__meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .section__inner {
+    padding: 1.25rem 0;
+  }
+
+  /* Long filter labels wrap comfortably on phones */
+  .filters,
+  .filters__group {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__link {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .navbar__title {
+    font-size: 0.9rem;
+  }
+
+  .filters__chip {
+    font-size: 0.82rem;
+    padding: 0.5rem 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .level-card,
+  .filters__chip,
+  .navbar__link {
+    transition: none;
+  }
+}
