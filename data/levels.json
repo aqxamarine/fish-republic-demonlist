@@ -181,8 +181,18 @@
       ],
       "thumbnail": "images/v194_573.png"
     },
-    {
+      {
       "rank": 16,
+      "name": "Acu",
+      "list": "extended",
+      "creator": "niegefeu",
+      "beatenBy": [
+        "Brian"
+      ],
+      "thumbnail": "images/maxresdefault.jpg"
+    },
+    {
+      "rank": 17,
       "name": "rauchkammer",
       "list": "extended",
       "creator": "Devilmine",
