@@ -151,6 +151,17 @@
     },
     {
       "rank": 13,
+      "name": "niwa",
+      "list": "main",
+      "creator": "Teno",
+      "beatenBy": [
+        "Brian",
+        "Mathmix"
+      ],
+      "thumbnail": "images/niwa.jpeg"
+    },
+    {
+      "rank": 14,
       "name": "Prismatic",
       "list": "main",
       "creator": "CatGeo",
@@ -160,7 +171,7 @@
       "thumbnail": "images/v194_616.png"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "name": "BRUTAL",
       "list": "main",
       "creator": "TShack",
@@ -170,9 +181,9 @@
       "thumbnail": "images/v194_579.png"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "name": "Sweater Weather",
-      "list": "main",
+      "list": "extended",
       "creator": "VelYT",
       "beatenBy": [
         "Brian",
@@ -182,7 +193,7 @@
       "thumbnail": "images/v194_573.png"
     },
       {
-      "rank": 16,
+      "rank": 17,
       "name": "Acu",
       "list": "extended",
       "creator": "niegefeu",
@@ -192,7 +203,7 @@
       "thumbnail": "images/maxresdefault.jpg"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "name": "rauchkammer",
       "list": "extended",
       "creator": "Devilmine",
