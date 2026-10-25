@@ -160,8 +160,7 @@ p {
 }
 
 .navbar__link[aria-current="page"] {
-  background: rgba(255, 255, 255, 0.9);
-  color: #111;
+  color: var(--text);
 }
 
 .navbar__link:hover {
