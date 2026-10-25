@@ -397,6 +397,78 @@ p {
 }
 
 /* ------------------------------------------------------------
+   Stats Viewer — one glass card per player
+   ------------------------------------------------------------ */
+
+.stats-viewer__header {
+  justify-content: center;
+}
+
+/* Tighter gap: navbar → Stats Viewer banner */
+.section--stats {
+  min-height: 100vh; /* background always reaches the bottom of the window */
+  padding-top: calc(var(--nav-height) + 1rem);
+}
+
+.section--stats .section__inner {
+  padding-top: 0.5rem;
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.stats-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.stats-card__name {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  overflow-wrap: anywhere;
+}
+
+.stats-card__points {
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.stats-card__levels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stats-card__levels li {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------------------------------------
    Responsive tweaks
    ------------------------------------------------------------ */
 
