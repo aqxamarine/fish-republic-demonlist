@@ -6,6 +6,7 @@
   "lists": [
     {
       "id": "main",
+      "page": "home",
       "scored": true,
       "label": "Main List (#1 – #10)",
       "divider": null,
@@ -13,6 +14,7 @@
     },
     {
       "id": "extended",
+      "page": "home",
       "scored": true,
       "label": "Extended List (#16 – #30)",
       "divider": "#16 – #30: Extended List",
@@ -20,10 +22,19 @@
     },
     {
       "id": "legacy",
+      "page": "home",
       "scored": false,
       "label": "Legacy List (#31+)",
       "divider": "#31+: Legacy List",
       "background": "images/v194_584.png"
+    },
+    {
+      "id": "future",
+      "page": "future",
+      "scored": false,
+      "label": "Future List",
+      "divider": null,
+      "background": "images/v194_404.png"
     }
   ],
   "levels": [
@@ -69,16 +80,6 @@
     },
     {
       "rank": 5,
-      "name": "Wild Rose",
-      "list": "main",
-      "creator": "Galaxxyss",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/v194_381.png"
-    },
-    {
-      "rank": 6,
       "name": "RASH",
       "list": "main",
       "creator": "loltad",
@@ -86,6 +87,16 @@
         "Brian"
       ],
       "thumbnail": "images/v194_387.png"
+    },
+    {
+      "rank": 6,
+      "name": "Wild Rose",
+      "list": "main",
+      "creator": "Galaxxyss",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/v194_381.png"
     },
     {
       "rank": 7,
@@ -212,6 +223,46 @@
         "Mathmix"
       ],
       "thumbnail": "images/v194_561.png"
+    },
+      {
+      "rank": 1,
+      "name": "Tidal Wave",
+      "list": "future",
+      "creator": "OniLink",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/tidalwave.jpg"
+    },
+    {
+      "rank": 2,
+      "name": "Coalescence",
+      "list": "future",
+      "creator": "amplitron",
+      "beatenBy": [
+        "Aquamarine"
+      ],
+      "thumbnail": "images/coalescence.jpg"
+    },
+    {
+      "rank": 3,
+      "name": "Renevant",
+      "list": "future",
+      "creator": "NikroPlays",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/renevant.jpg"
+    },
+    {
+      "rank": 4,
+      "name": "Knights of Thunder",
+      "list": "future",
+      "creator": "HangerLord",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/kot.jpeg"
     }
   ]
 }
