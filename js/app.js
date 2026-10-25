@@ -66,12 +66,16 @@
 
     scored.forEach(function (level, i) {
       // i = 0 is the top level → xN; the last scored level → x1
-      level.points = formatPoints(step * (n - i));
+      level.pointsNum = step * (n - i);
+      level.points = formatPoints(level.pointsNum);
     });
 
     // Everything outside the scored lists is worth 0
     (data.levels || []).forEach(function (level) {
-      if (!scoredIds[level.list]) level.points = "0";
+      if (!scoredIds[level.list]) {
+        level.pointsNum = 0;
+        level.points = "0";
+      }
     });
   }
 
@@ -198,6 +202,74 @@
       });
   }
 
+  /**
+   * Stats Viewer page — one card per player with:
+   *  - a counter of the summed points of every level they beat
+   *  - the list of level names they beat
+   */
+  function buildStats(data, site) {
+    var section = el("section", "section section--stats section--lone");
+    section.style.backgroundImage = "url('images/v194_334.png')";
+
+    var inner = el("div", "section__inner stats-viewer");
+
+    var header = el("div", "list-divider stats-viewer__header");
+    header.appendChild(el("span", null, "Stats Viewer"));
+    inner.appendChild(header);
+
+    // Levels on the Future page are excluded from the Stats Viewer
+    var futureListIds = {};
+    (data.lists || []).forEach(function (list) {
+      if ((list.page || "home") === "future") futureListIds[list.id] = true;
+    });
+
+    // Aggregate: player → total points + levels beaten
+    var players = {};
+    (data.levels || []).forEach(function (level) {
+      if (futureListIds[level.list]) return;
+      var pts = level.pointsNum || 0;
+      (level.beatenBy || []).forEach(function (player) {
+        var entry = players[player];
+        if (!entry) entry = players[player] = { name: player, total: 0, levels: [], seen: {} };
+        var key = String(level.name).trim().toLowerCase();
+        if (entry.seen[key]) return; // same level listed on several pages — count once
+        entry.seen[key] = true;
+        entry.total += pts;
+        entry.levels.push(level);
+      });
+    });
+
+    var ranked = Object.keys(players).map(function (key) { return players[key]; });
+    ranked.forEach(function (entry) {
+      entry.levels.sort(function (a, b) { return (b.pointsNum || 0) - (a.pointsNum || 0); });
+    });
+    ranked.sort(function (a, b) {
+      return b.total - a.total || a.name.localeCompare(b.name);
+    });
+
+    ranked.forEach(function (entry) {
+      var card = el("article", "stats-card");
+
+      var top = el("div", "stats-card__header");
+      top.appendChild(el("h2", "stats-card__name", entry.name));
+      top.appendChild(
+        el("span", "stats-card__points", formatPoints(entry.total) + " " + (site.pointsLabel || "points"))
+      );
+      card.appendChild(top);
+
+      var levelsList = el("ul", "stats-card__levels");
+      entry.levels.forEach(function (level) {
+        levelsList.appendChild(el("li", null, level.name));
+      });
+      card.appendChild(levelsList);
+
+      inner.appendChild(card);
+    });
+
+    section.appendChild(inner);
+    return section;
+  }
+
   function render(data) {
     var app = document.getElementById("app");
     app.innerHTML = "";
@@ -207,6 +279,12 @@
     var levels = Array.isArray(data.levels) ? data.levels : [];
 
     computePoints(data);
+
+    // Stats Viewer has its own rendering path
+    if (currentPage === "stats") {
+      app.appendChild(buildStats(data, site));
+      return;
+    }
 
     // Only render the lists assigned to this page
     var pageLists = lists.filter(function (list) {
