@@ -7,6 +7,15 @@
 (function () {
   "use strict";
 
+  /**
+   * Which page is this script rendering? Read from the script tag:
+   *   <script src="./js/app.js" data-page="future"></script>
+   * Lists in levels.json are assigned to pages via their own "page" field
+   * (defaults to "home" when omitted).
+   */
+  var scriptTag = document.querySelector('script[src*="app.js"]');
+  var currentPage = (scriptTag && scriptTag.dataset.page) || "home";
+
   /** Small helper: create an element with a class and optional text. */
   function el(tag, className, text) {
     var node = document.createElement(tag);
@@ -77,8 +86,14 @@
 
     var info = el("div", "level-card__info");
 
-    var name = el("h2", "level-card__name", "#" + level.rank + " – " + level.name);
-    info.appendChild(name);
+    // Remember the level name so the AREDL loader can stamp the placement later
+    card.dataset.name = String(level.name).trim().toLowerCase();
+
+    // Top row: level name on the left, AREDL placement pinned right
+    var top = el("div", "level-card__top");
+    top.appendChild(el("h2", "level-card__name", "#" + level.rank + " – " + level.name));
+    top.appendChild(el("span", "level-card__aredl")); // filled in by loadAredlPlacements()
+    info.appendChild(top);
 
     info.appendChild(el("p", "level-card__author", "By " + level.creator));
 
@@ -152,6 +167,37 @@
     app.appendChild(box);
   }
 
+  /**
+   * Fetch placements from the AREDL (All Rated Extreme Demons List) API and
+   * stamp "AREDL #N" onto every card whose level name matches. Runs in the
+   * background — if the API is unreachable the cards simply show no badge.
+   */
+  function loadAredlPlacements() {
+    fetch("https://api.aredl.net/v2/api/aredl/levels")
+      .then(function (res) {
+        if (!res.ok) throw new Error("AREDL HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (aredlLevels) {
+        var byName = {};
+        (aredlLevels || []).forEach(function (entry) {
+          var key = String(entry.name).trim().toLowerCase();
+          if (!(key in byName)) byName[key] = entry.position;
+        });
+
+        document.querySelectorAll(".level-card").forEach(function (card) {
+          var position = byName[card.dataset.name];
+          var badge = card.querySelector(".level-card__aredl");
+          if (badge && position) {
+            badge.textContent = "AREDL #" + position;
+          }
+        });
+      })
+      .catch(function () {
+        // Placements are a nice-to-have; don't break the page over them.
+      });
+  }
+
   function render(data) {
     var app = document.getElementById("app");
     app.innerHTML = "";
@@ -162,21 +208,38 @@
 
     computePoints(data);
 
-    lists.forEach(function (list, i) {
+    // Only render the lists assigned to this page
+    var pageLists = lists.filter(function (list) {
+      return (list.page || "home") === currentPage;
+    });
+
+    pageLists.forEach(function (list, i) {
       var inList = levels
         .filter(function (l) { return l.list === list.id; })
         .sort(function (a, b) { return a.rank - b.rank; });
 
-      var section = buildSection(list, inList, site, i, lists.length);
+      var section = buildSection(list, inList, site, i, pageLists.length);
 
       // The filter chips live at the top of the first section
-      if (i === 0) section.insertBefore(buildFilters(lists), section.firstChild);
+      // (only worth showing when there is more than one list to jump between)
+      if (i === 0 && pageLists.length > 1) {
+        section.insertBefore(buildFilters(pageLists), section.firstChild);
+      } else if (i === 0) {
+        // No chip bar — pad below the fixed navbar instead
+        section.classList.add("section--lone");
+      }
 
       app.appendChild(section);
     });
+
+    // Fill in AREDL placements in the background once the page is up
+    loadAredlPlacements();
   }
 
-  fetch("data/levels.json", { headers: { Accept: "application/json" } })
+  fetch("data/levels.json?ts=" + Date.now(), {
+    headers: { Accept: "application/json" },
+    cache: "no-store" // never reuse a cached JSON — data edits show up on reload
+  })
     .then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status + " while loading levels.json");
       return res.json();
