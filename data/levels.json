@@ -173,6 +173,16 @@
     },
     {
       "rank": 14,
+      "name": "Azurite (Sillow)",
+      "list": "main",
+      "creator": "Sillow",
+      "beatenBy": [
+        "Mathmix"
+      ],
+      "thumbnail": "images/azurite.jpeg"
+    },
+    {
+      "rank": 15,
       "name": "niwa",
       "list": "main",
       "creator": "Teno",
@@ -183,9 +193,9 @@
       "thumbnail": "images/niwa.jpeg"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "name": "Prismatic",
-      "list": "main",
+      "list": "extended",
       "creator": "CatGeo",
       "beatenBy": [
         "Mathmix"
@@ -193,9 +203,9 @@
       "thumbnail": "images/v194_616.png"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "name": "BRUTAL",
-      "list": "extended",
+      "list": "main",
       "creator": "TShack",
       "beatenBy": [
         "Mathmix"
@@ -203,7 +213,7 @@
       "thumbnail": "images/v194_579.png"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "name": "Sweater Weather",
       "list": "extended",
       "creator": "VelYT",
@@ -215,7 +225,7 @@
       "thumbnail": "images/v194_573.png"
     },
       {
-      "rank": 18,
+      "rank": 19,
       "name": "Acu",
       "list": "extended",
       "creator": "niegefeu",
@@ -225,7 +235,7 @@
       "thumbnail": "images/maxresdefault.jpg"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "name": "rauchkammer",
       "list": "extended",
       "creator": "Devilmine",
