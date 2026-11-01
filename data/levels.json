@@ -40,16 +40,6 @@
   "levels": [
     {
       "rank": 1,
-      "name": "Bloodlust",
-      "list": "main",
-      "creator": "Knobbelboy",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/Bloodlust.png"
-    },
-    {
-      "rank": 2,
       "name": "Knights of Thunder",
       "list": "main",
       "creator": "HangerLord",
@@ -59,17 +49,7 @@
       "thumbnail": "images/kot.jpeg"
     },
     {
-      "rank": 3,
-      "name": "Arctic Lights",
-      "list": "main",
-      "creator": "EndLevel",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/Arctic_Lights.png"
-    },
-    {
-      "rank": 4,
+      "rank": 2,
       "name": "Icefall",
       "list": "main",
       "creator": "Filqh",
@@ -79,7 +59,7 @@
       "thumbnail": "images/v194_362.png"
     },
     {
-      "rank": 5,
+      "rank": 3,
       "name": "Quantum Dynamix",
       "list": "main",
       "creator": "GrenadeofTacos",
@@ -89,7 +69,7 @@
       "thumbnail": "images/quantum.jpg"
     },
     {
-      "rank": 6,
+      "rank": 4,
       "name": "Black Blizzard",
       "list": "main",
       "creator": "KrmaL",
@@ -99,17 +79,7 @@
       "thumbnail": "images/v194_369.png"
     },
     {
-      "rank": 7,
-      "name": "Cloud",
-      "list": "main",
-      "creator": "Kuip",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/v194_375.png"
-    },
-    {
-      "rank": 8,
+      "rank": 5,
       "name": "RASH",
       "list": "main",
       "creator": "loltad",
@@ -119,7 +89,7 @@
       "thumbnail": "images/v194_387.png"
     },
     {
-      "rank": 9,
+      "rank": 6,
       "name": "Wild Rose",
       "list": "main",
       "creator": "Galaxxyss",
@@ -129,7 +99,7 @@
       "thumbnail": "images/v194_381.png"
     },
     {
-      "rank": 10,
+      "rank": 7,
       "name": "Blade of Justice",
       "list": "main",
       "creator": "Manix648",
@@ -139,7 +109,7 @@
       "thumbnail": "images/v194_393.png"
     },
     {
-      "rank": 11,
+      "rank": 8,
       "name": "Gravity",
       "list": "main",
       "creator": "icedcave",
@@ -149,7 +119,7 @@
       "thumbnail": "images/v194_399.png"
     },
     {
-      "rank": 12,
+      "rank": 9,
       "name": "Bloodbath",
       "list": "main",
       "creator": "Riot",
@@ -160,7 +130,7 @@
       "thumbnail": "images/v194_408.png"
     },
     {
-      "rank": 13,
+      "rank": 10,
       "name": "Allegiance",
       "list": "main",
       "creator": "NikroPlays",
@@ -171,7 +141,7 @@
       "thumbnail": "images/v194_414.png"
     },
     {
-      "rank": 14,
+      "rank": 11,
       "name": "Hypersonic",
       "list": "main",
       "creator": "Viprin",
@@ -181,7 +151,7 @@
       "thumbnail": "images/v194_420.png"
     },
     {
-      "rank": 15,
+      "rank": 12,
       "name": "Cataclysm",
       "list": "main",
       "creator": "Ggb0y",
@@ -192,9 +162,9 @@
       "thumbnail": "images/v194_598.png"
     },
     {
-      "rank": 16,
+      "rank": 13,
       "name": "Azurite (Sillow)",
-      "list": "extended",
+      "list": "main",
       "creator": "Sillow",
       "beatenBy": [
         "Mathmix"
@@ -202,9 +172,9 @@
       "thumbnail": "images/azurite.jpg"
     },
     {
-      "rank": 17,
+      "rank": 14,
       "name": "niwa",
-      "list": "extended",
+      "list": "main",
       "creator": "Teno",
       "beatenBy": [
         "Brian",
@@ -213,9 +183,9 @@
       "thumbnail": "images/niwa.jpeg"
     },
     {
-      "rank": 18,
+      "rank": 15,
       "name": "Prismatic",
-      "list": "extended",
+      "list": "main",
       "creator": "CatGeo",
       "beatenBy": [
         "Mathmix"
@@ -223,7 +193,7 @@
       "thumbnail": "images/v194_616.png"
     },
     {
-      "rank": 19,
+      "rank": 16,
       "name": "BRUTAL",
       "list": "extended",
       "creator": "TShack",
@@ -233,19 +203,18 @@
       "thumbnail": "images/v194_579.png"
     },
     {
-      "rank": 20,
+      "rank": 17,
       "name": "Sweater Weather",
       "list": "extended",
       "creator": "VelYT",
       "beatenBy": [
         "Brian",
-        "Aquamarine",
-        "Mathmix"
+        "Aquamarine"
       ],
       "thumbnail": "images/v194_573.png"
     },
       {
-      "rank": 21,
+      "rank": 18,
       "name": "Acu",
       "list": "extended",
       "creator": "niegefeu",
@@ -255,7 +224,7 @@
       "thumbnail": "images/maxresdefault.jpg"
     },
     {
-      "rank": 22,
+      "rank": 19,
       "name": "rauchkammer",
       "list": "extended",
       "creator": "Devilmine",
@@ -263,46 +232,6 @@
         "Mathmix"
       ],
       "thumbnail": "images/v194_561.png"
-    },
-      {
-      "rank": 1,
-      "name": "Tidal Wave",
-      "list": "future",
-      "creator": "OniLink",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/tidalwave.jpg"
-    },
-    {
-      "rank": 2,
-      "name": "Coalescence",
-      "list": "future",
-      "creator": "amplitron",
-      "beatenBy": [
-        "Aquamarine"
-      ],
-      "thumbnail": "images/coalescence.jpg"
-    },
-    {
-      "rank": 3,
-      "name": "Renevant",
-      "list": "future",
-      "creator": "NikroPlays",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/renevant.jpg"
-    },
-    {
-      "rank": 4,
-      "name": "Knights of Thunder",
-      "list": "future",
-      "creator": "HangerLord",
-      "beatenBy": [
-        "Mathmix"
-      ],
-      "thumbnail": "images/kot.jpeg"
     }
   ]
 }
